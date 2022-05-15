@@ -1,12 +1,15 @@
 #include <iostream>
 #include <regex>
 #include <conio.h>
+#include <fstream>
 
 using namespace std ;
 
 void passwordConditions();
 void strongPassword();
 string passwordPreview();
+void storeInfo(bool infoValid, string userProfile, string ID , string password, const char *usersDBname);
+
 int main() {
 
     return 0;
@@ -57,4 +60,11 @@ string passwordPreview() {
 
     return password;
 }
-
+void storeInfo(bool infoValid, string userProfile, string ID , string password, const char *usersDBname) {
+    ofstream usersDB;
+    usersDB.open(usersDBname, std::ios::out|std::ios::app);
+    if (infoValid && usersDB.is_open()) {
+        usersDB << userProfile << '\t' << password << '\t' << ID << endl;
+    }
+    usersDB.close();
+}
