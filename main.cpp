@@ -1,8 +1,10 @@
 #include <iostream>
+#include <regex>
+
 using namespace std ;
 
 void passwordConditions();
-
+void strongPassword();
 int main() {
 
     return 0;
@@ -18,4 +20,13 @@ void passwordConditions(){
 }
 
 
+void strongPassword(string password){
+    regex strongForm ("(?:[a-z]+[A-Z]+)|(?:[A-Z]+[a-z]+)|\\W+|(?:[A-Za-z]+[0-9]+)" );
 
+    if (regex_search(password, strongForm )){
+
+        cout << "strong form";
+
+    }else cout << "weak form";
+
+}
