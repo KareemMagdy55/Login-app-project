@@ -1,10 +1,12 @@
 #include <iostream>
 #include <regex>
+#include <conio.h>
 
 using namespace std ;
 
 void passwordConditions();
 void strongPassword();
+string passwordPreview();
 int main() {
 
     return 0;
@@ -30,3 +32,29 @@ void strongPassword(string password){
     }else cout << "weak form";
 
 }
+string passwordPreview() {
+    // this function decrypt password with ****
+    string userKey;
+    string password;
+    int i = 0;
+    cout << "\nPlease enter your password :";
+
+    while (1){
+        userKey[i] = getch();
+
+        if (userKey[i] == '\r') break;
+        if (userKey[i] != '\b') {
+            password += userKey[i];
+            cout << '*';
+            i++;
+        }else{
+            if (i != 0) {
+                cout << "\b \b";
+                i--;
+            }
+        }
+    }
+
+    return password;
+}
+
